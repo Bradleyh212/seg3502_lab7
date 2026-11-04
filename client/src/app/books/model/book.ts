@@ -17,3 +17,7 @@ export class Author {
     public lastName: string
   ){}
 }
+
+export interface AuthorDetails extends Author {
+  books: {title: string}[];
+}

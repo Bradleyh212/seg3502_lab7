@@ -8,11 +8,14 @@ import {LoginComponent} from "./login/login.component";
 import {AdminComponent} from "./admin/admin.component";
 import {loggedInGuard} from "./logged-in.guard";
 
+import {AuthorsComponent} from './authors/authors.component';
+
 const booksRoutes: Routes = [
   {path: ':id', component: BookComponent}
 ];
 
 export const routes: Routes = [
+  {path: 'authors', component: AuthorsComponent},
   {path: 'home', component: HomeComponent},
   {path: 'about', component: AboutComponent},
   {path: 'contact', component: ContactComponent},

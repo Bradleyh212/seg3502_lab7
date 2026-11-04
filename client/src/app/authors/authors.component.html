@@ -1,0 +1,23 @@
+<h2>Authors</h2>
+<form (ngSubmit)="search()" class="mb-3">
+  <label for="author-id" class="form-label">Author ID</label>
+  <input id="author-id" name="authorId" type="text" inputmode="numeric"
+         class="form-control mb-2" [(ngModel)]="authorId" [disabled]="loading">
+  <button type="submit" class="btn btn-primary" [disabled]="loading">
+    {{ loading ? 'Searching...' : 'Find author' }}
+  </button>
+</form>
+<p *ngIf="message" class="alert alert-warning" role="alert">{{ message }}</p>
+<section *ngIf="author" aria-live="polite">
+  <h3>{{ author.firstName }} {{ author.lastName }}</h3>
+  <dl>
+    <dt>ID</dt><dd>{{ author.id }}</dd>
+    <dt>First name</dt><dd>{{ author.firstName }}</dd>
+    <dt>Last name</dt><dd>{{ author.lastName }}</dd>
+  </dl>
+  <h4>Books</h4>
+  <ul *ngIf="author.books.length; else noBooks">
+    <li *ngFor="let book of author.books">{{ book.title }}</li>
+  </ul>
+  <ng-template #noBooks><p>No books associated with this author.</p></ng-template>
+</section>
